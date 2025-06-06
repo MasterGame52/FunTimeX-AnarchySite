@@ -3,38 +3,90 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Кабинет игрока | FunTimeX</title>
+  <title>Кабинет | FunTimeX</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
+  <!-- Стили в стиле сайта -->
   <style>
     body {
-      font-family: Arial, sans-serif;
+      margin: 0;
       background: #121212;
       color: #eee;
+      font-family: 'Press Start 2P', monospace;
       padding: 20px;
       text-align: center;
     }
-    input, button {
-      padding: 10px;
-      margin: 5px;
-      font-size: 1rem;
-      border-radius: 6px;
-      border: none;
+
+    h1 {
+      color: #ff4b4b;
+      font-size: 1.4rem;
+      text-shadow: 2px 2px #880000;
+      margin-bottom: 30px;
     }
-    .hidden { display: none; }
+
+    input, button {
+      font-family: inherit;
+      padding: 10px;
+      margin: 10px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      border: none;
+      outline: none;
+    }
+
+    input {
+      background: #1e1e1e;
+      color: #ffa6a6;
+      border: 1px solid #ff4b4b;
+    }
+
+    button {
+      background: #ff4b4b;
+      color: #121212;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background: #cc3a3a;
+    }
+
+    .box {
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 12px #ff4b4baa;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    p {
+      margin: 10px 0;
+      font-size: 0.65rem;
+      color: #ccc;
+    }
+
+    span {
+      color: #ffa6a6;
+    }
   </style>
 </head>
 <body>
 
   <h1>👤 Кабинет игрока</h1>
 
-  <div id="auth-block">
+  <div class="box" id="auth-block">
     <input type="email" id="email" placeholder="Email"><br>
     <input type="password" id="password" placeholder="Пароль"><br>
     <button onclick="register()">Регистрация</button>
     <button onclick="login()">Вход</button>
   </div>
 
-  <div id="account-block" class="hidden">
+  <div class="box hidden" id="account-block">
     <p><strong>Email:</strong> <span id="user-email"></span></p>
     <p><strong>UID:</strong> <span id="user-uid"></span></p>
     <p><strong>Донат:</strong> <span id="user-rank">Новичок</span></p>
@@ -66,11 +118,11 @@
       const password = document.getElementById("password").value;
 
       auth.createUserWithEmailAndPassword(email, password)
-        .then((userCredential) => {
+        .then(userCredential => {
           userCredential.user.sendEmailVerification();
           alert("Письмо подтверждения отправлено на почту!");
         })
-        .catch((error) => {
+        .catch(error => {
           alert("Ошибка регистрации: " + error.message);
         });
     }
@@ -80,7 +132,7 @@
       const password = document.getElementById("password").value;
 
       auth.signInWithEmailAndPassword(email, password)
-        .then((userCredential) => {
+        .then(userCredential => {
           const user = userCredential.user;
           if (user.emailVerified) {
             showAccount(user);
@@ -89,7 +141,7 @@
             auth.signOut();
           }
         })
-        .catch((error) => {
+        .catch(error => {
           alert("Ошибка входа: " + error.message);
         });
     }
@@ -115,12 +167,11 @@
       }
     }, 1000);
 
-    auth.onAuthStateChanged((user) => {
+    auth.onAuthStateChanged(user => {
       if (user && user.emailVerified) {
         showAccount(user);
       }
     });
   </script>
-
 </body>
 </html>
