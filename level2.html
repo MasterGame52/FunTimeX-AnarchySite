@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Уровень 2 — Квест FunTimeX</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    body { background: #000; color: #0f0; font-family: 'Press Start 2P'; text-align: center; padding: 40px; }
+    .msg { font-size: 0.8rem; margin-top: 30px; }
+    .codebox {
+      background: #111; padding: 15px; border-radius: 10px; display: inline-block;
+      box-shadow: 0 0 10px #0f0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Уровень 2</h1>
+  <div class="msg">
+    В этом коде ключ: <br /><br />
+    <div class="codebox">01001100 00110011 01110110 01100101 01101100</div>
+    <br /><br />
+    Что это? Переведи.
+  </div>
+
+  <script>
+    setTimeout(() => {
+      alert("Подсказка: это бинарный код ASCII...");
+    }, 10000);
+  </script>
+
+  <form style="margin-top:30px;" onsubmit="event.preventDefault();checkAnswer()">
+    <input type="text" id="code" placeholder="Ответ..." />
+    <br />
+    <button>Далее</button>
+  </form>
+
+  <script>
+    function checkAnswer() {
+      const input = document.getElementById("code").value.trim().toLowerCase();
+      if (input === "l3vel") {
+        window.location.href = "level3.html";
+      } else {
+        alert("Нет, это не оно...");
+      }
+    }
+  </script>
+
+</body>
+</html>

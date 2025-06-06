@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Ожидание</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: #121212; color: #ffa6a6;
+      font-family: 'Press Start 2P', monospace;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      height: 100vh; text-align: center;
+    }
+    button {
+      display: none;
+      margin-top: 20px; padding: 10px 20px;
+      background: #1e1e1e; color: #ffa6a6;
+      border: 1px solid #ff4b4b; border-radius: 6px;
+    }
+    button:hover {
+      background: #ff4b4b; color: #121212;
+    }
+  </style>
+</head>
+<body>
+  <h1>Подожди немного...</h1>
+  <p id="msg">Загрузка...</p>
+  <button id="next" onclick="go()">Продолжить</button>
+  <script>
+    setTimeout(() => {
+      document.getElementById('msg').innerText = 'Ты можешь идти.';
+      document.getElementById('next').style.display = 'block';
+    }, 10000);
+    function go() {
+      window.location.href = 'ultra5.html';
+    }
+  </script>
+</body>
+</html>

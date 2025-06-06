@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Уровень 3 — Финальный код</title>
+  <style>
+    body {
+      background: #000;
+      color: #0f0;
+      font-family: monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+    input, button {
+      background: #111;
+      color: #0f0;
+      border: 1px solid #0f0;
+      padding: 10px;
+      margin-top: 20px;
+      font-family: inherit;
+    }
+    button:hover {
+      background: #0f0;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Последний шаг</h1>
+  <p>Введи пароль, если ты прошёл весь путь...</p>
+
+  <input id="code" placeholder="Введите код">
+  <br>
+  <button onclick="check()">Продолжить</button>
+
+  <script>
+    function check() {
+      const input = document.getElementById('code').value.trim().toLowerCase();
+      if (input === 'freedom') {
+        window.location.href = 'level4.html';
+      } else {
+        alert('Неверный код. Подумай ещё...');
+      }
+    }
+  </script>
+
+</body>
+</html>

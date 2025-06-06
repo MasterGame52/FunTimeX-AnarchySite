@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Уровень 4 — Терпение</title>
+  <style>
+    body {
+      background: #000;
+      color: #0f0;
+      font-family: monospace;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      height: 100vh;
+      padding: 20px;
+    }
+    #nextBtn {
+      display: none;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #111;
+      color: #0f0;
+      border: 1px solid #0f0;
+      font-family: inherit;
+      cursor: pointer;
+    }
+    #nextBtn:hover {
+      background: #0f0;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Ты почти дошёл</h1>
+  <p id="message">Жди 10 секунд...</p>
+  <button id="nextBtn" onclick="go()">Продолжить</button>
+
+  <script>
+    setTimeout(() => {
+      document.getElementById("message").innerText = "Ты достоин выбрать свой путь.";
+      document.getElementById("nextBtn").style.display = "inline-block";
+    }, 10000);
+
+    function go() {
+      window.location.href = "deep.html";
+    }
+  </script>
+
+</body>
+</html>

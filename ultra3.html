@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Истина</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: #121212; color: #ffa6a6;
+      font-family: 'Press Start 2P', monospace;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      height: 100vh; text-align: center;
+    }
+    span.secret {
+      opacity: 0.03;
+    }
+    input, button {
+      margin-top: 20px; background: #1e1e1e;
+      color: #ffa6a6; border: 1px solid #ff4b4b;
+      padding: 10px; border-radius: 6px;
+    }
+    button:hover {
+      background: #ff4b4b; color: #121212;
+    }
+  </style>
+</head>
+<body>
+  <h1>Спрятанное видно</h1>
+  <p><span class="secret">truth</span></p>
+  <input id="code" placeholder="Введите слово">
+  <button onclick="go()">Ввод</button>
+  <script>
+    function go() {
+      if (document.getElementById('code').value.toLowerCase() === 'truth') {
+        window.location.href = 'ultra4.html';
+      } else {
+        alert('Неверно');
+      }
+    }
+  </script>
+</body>
+</html>

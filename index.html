@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FunTimeX Anarchy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background: #121212;
+      color: #eee;
+      font-family: 'Press Start 2P', cursive, monospace;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      color: #ff4b4b;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px #880000;
+    }
+    p.description {
+      font-size: 1rem;
+      margin-bottom: 30px;
+      max-width: 600px;
+      line-height: 1.4;
+      color: #ccc;
+    }
+    .ip {
+      background: #222;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 1.2rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 10px;
+      user-select: none;
+      cursor: pointer;
+      transition: background 0.3s;
+      display: inline-block;
+    }
+    .ip:hover {
+      background: #ff4b4b;
+      color: #121212;
+    }
+    #quest-input {
+      margin-top: 10px;
+      display: none;
+      margin-bottom: 30px;
+    }
+    #quest-code {
+      background: #222;
+      color: #ffa6a6;
+      border: 1px solid #ff4b4b;
+      padding: 6px;
+      font-family: inherit;
+      border-radius: 6px;
+    }
+    .quest-btn {
+      margin-left: 5px;
+      padding: 6px 12px;
+      font-family: inherit;
+      background: #ff4b4b;
+      color: #121212;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .btns {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .btn {
+      background: #ff4b4b;
+      border: none;
+      color: #121212;
+      padding: 12px 24px;
+      font-weight: bold;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: background 0.3s;
+      box-shadow: 0 0 8px #ff4b4b88;
+    }
+    .btn:hover {
+      background: #cc3a3a;
+      box-shadow: 0 0 12px #cc3a3acc;
+    }
+    footer {
+      margin-top: auto;
+      padding: 10px;
+      font-size: 0.7rem;
+      color: #666;
+    }
+    .team, .donate, .news-block {
+      background: #1e1e1e;
+      border-radius: 12px;
+      max-width: 600px;
+      padding: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 0 15px #ff4b4baa;
+      font-size: 0.9rem;
+      user-select: none;
+    }
+    .team h2, .donate h2 {
+      margin-top: 0;
+      color: #ff4b4b;
+      text-shadow: 1px 1px #880000;
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+    }
+    .team-member {
+      margin-bottom: 12px;
+    }
+    .member-name {
+      font-weight: bold;
+      color: #ffa6a6;
+      cursor: pointer;
+    }
+    .member-role {
+      color: #ccc;
+      font-style: italic;
+    }
+    .donate-pack {
+      background: #222;
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 0 8px #ff4b4b66;
+      cursor: default;
+    }
+    .pack-name {
+      font-weight: bold;
+      color: #ffa6a6;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+    .pack-price {
+      background: #ff4b4b;
+      color: #121212;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    .pack-price:hover {
+      background: #cc3a3a;
+    }
+    .news-entry {
+      background: #222;
+      padding: 12px 16px;
+      margin-bottom: 12px;
+      border-left: 4px solid #ff4b4b;
+      border-radius: 8px;
+      text-align: left;
+    }
+    .news-entry strong {
+      color: #ffa6a6;
+      display: block;
+    }
+    .news-entry span {
+      color: #ccc;
+      font-size: 0.7rem;
+    }
+    .news-link {
+      background: #ff4b4b;
+      color: #121212;
+      padding: 10px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.7rem;
+      font-weight: bold;
+      display: inline-block;
+      margin-top: 10px;
+    }
+    .news-link:hover {
+      background: #cc3a3a;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>FunTimeX Anarchy</h1>
+  <p class="description">Настоящий анархичный Minecraft сервер.<br />Версия: 1.16.5</p>
+  <div class="ip" id="ip">В разработке</div>
+  <div id="quest-input">
+    <input id="quest-code" type="text" placeholder="Код..." />
+    <button class="quest-btn" onclick="startQuest()">OK</button>
+  </div>
+
+  <div class="btns" style="margin-top: 20px;">
+    <a href="minecraft://play.funtimex.fun" class="btn">Присоединиться</a>
+    <a href="about.html" class="btn">О нас</a>
+    <a href="timer.html" class="btn">Таймер до вайпа</a>
+  </div>
+
+  <div class="donate">
+    <h2>Донат</h2>
+    <div class="donate-pack"><div class="pack-name" onclick="openModal('novice')">Пакет "Новичок"</div><a href="https://t.me/MasterGameYTT" class="pack-price" target="_blank">100 ₽</a></div>
+    <div class="donate-pack"><div class="pack-name" onclick="openModal('warrior')">Пакет "Воин"</div><a href="https://t.me/MasterGameYTT" class="pack-price" target="_blank">300 ₽</a></div>
+    <div class="donate-pack"><div class="pack-name" onclick="openModal('legend')">Пакет "Легенда"</div><a href="https://t.me/MasterGameYTT" class="pack-price" target="_blank">1000 ₽</a></div>
+    <p style="font-size: 0.75rem; margin-top: 10px; color: #999;">Все донаты помогают развитию сервера. Спасибо за поддержку!</p>
+  </div>
+
+  <div class="news-block">
+    <h2 style="color:#ff4b4b; text-shadow: 1px 1px #880000;">Новости сервера</h2>
+    <div class="news-entry"><strong>05.06.2025</strong><span>Старт страницы новостей! Следите за обновлениями.</span></div>
+    <div class="news-entry"><strong>04.06.2025</strong><span>Обновлён ретро-дизайн сайта.</span></div>
+    <div class="news-entry"><strong>01.06.2025</strong><span>Открытие сервера FunTimeX!</span></div>
+    <a class="news-link" href="news.html">Читать все новости</a>
+  </div>
+
+  <div class="team">
+    <h2>Состав команды FunTimeX</h2>
+    <div class="team-member"><span class="member-name">Даниил #турникмэн</span> — Владелец</div>
+    <div class="team-member"><span class="member-name" id="master-yt">MasterGameYT</span> — Тех админ</div>
+  </div>
+
+  <div id="reveal-code" style="display:none; font-size: 0.7rem; color: #ffa6a6; margin-top: 10px; margin-bottom: 20px;">Код доступа: <strong>cursed</strong></div>
+
+  <div style="text-align: center; margin-bottom: 5px;">
+    <a href="https://discord.gg/kGu2G2G8zC" target="_blank" style="color: #ff4b4b; margin: 0 15px;">Discord</a>
+    <a href="https://vk.com/club226697829" target="_blank" style="color: #ff4b4b; margin: 0 15px;">ВК</a>
+    <a href="https://t.me/FunTimeXAnarchy" target="_blank" style="color: #ff4b4b; margin: 0 15px;">Telegram</a>
+  </div>
+
+  <footer>
+    © 2025 FunTimeX | Все права использования принадлежат MasterGameYT
+  <p style="font-size: 0.6rem; color: #333; margin-top: 10px;">🕵️ Кто ищет — тот найдёт. Иногда достаточно 3 кликов...</p>
+</footer>
+
+  <script>
+    let secretClicks = 0;
+
+    document.getElementById('ip').addEventListener('click', () => {
+      secretClicks++;
+      if (secretClicks >= 3) {
+        document.getElementById('quest-input').style.display = 'block';
+      }
+    });
+
+    function startQuest() {
+      const code = document.getElementById('quest-code').value.trim().toLowerCase();
+      if (code === 'cursed') {
+        window.location.href = 'level1.html';
+      } else {
+        alert('Неверный код...');
+      }
+    }
+
+    function openModal(name) {
+      alert('Описание доната: ' + name);
+    }
+
+    let masterClicks = 0;
+    const masterYT = document.getElementById('master-yt');
+    const revealCode = document.getElementById('reveal-code');
+    masterYT.addEventListener('click', () => {
+      masterClicks++;
+      if (masterClicks >= 5) {
+        revealCode.style.display = 'block';
+      }
+    });
+  </script>
+
+</body>
+</html>
